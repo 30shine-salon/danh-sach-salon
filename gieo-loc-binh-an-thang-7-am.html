@@ -227,7 +227,7 @@
   .region-head h3{font-size:1.3rem; font-style:italic; color:var(--gold); font-weight:600;}
   .region-count{font-size:.85rem; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
   .salon-grid{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr)); gap:10px;
   }
   .salon-chip{
     background:var(--card-bg); border:1px solid var(--divider); border-radius:10px;
@@ -255,6 +255,17 @@
     .gifts-grid{grid-template-columns:1fr;}
     .hero{padding-top:96px;}
     .moon{width:40vw;height:40vw; top:6%;}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 18px;}
+    section{padding:64px 0;}
+    .hero-inner{padding-bottom:100px;}
+    .section-head{margin-bottom:36px;}
+    .quote-card{padding:28px 22px;}
+    .gift-card{padding:26px 22px;}
+    .stat{padding:28px 22px;}
+    .hero .dates{gap:10px;}
+    .pill{font-size:12.5px; padding:8px 14px;}
   }
   @media (prefers-reduced-motion: reduce){
     .lantern{animation:none;}
