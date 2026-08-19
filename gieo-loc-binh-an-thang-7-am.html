@@ -595,6 +595,19 @@
     variant: utmParams.get('utm_content') || 'default'
   };
 
+  // Chuyển tiếp UTM từ landing page sang link đặt lịch, để hệ thống đích (nếu có đọc query string)
+  // vẫn nhận được nguồn/kênh/hook — không bị mất khi khách bấm CTA.
+  document.querySelectorAll('a[data-cta]').forEach(function(el){
+    try {
+      var target = new URL(el.href, window.location.href);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function(key){
+        var val = utmParams.get(key);
+        if (val && !target.searchParams.has(key)) target.searchParams.set(key, val);
+      });
+      el.href = target.toString();
+    } catch (e) { /* bỏ qua nếu href không parse được */ }
+  });
+
   document.querySelectorAll('[data-cta]').forEach(function(el){
     el.addEventListener('click', function(){
       if (typeof gtag === 'function') {
