@@ -586,21 +586,21 @@
 
 <script>
   // Ghi nhận nguồn vào trang: đọc UTM từ URL để gắn vào các event GA4 bên dưới.
-  // Placement dự kiến: lockscreen_noti (push) / app (banner) / web (banner) — set qua utm_source.
+  // Quy ước GA4 30shine.com (251658488): chỉ dùng utm_source, KHÔNG dùng utm_medium/utm_campaign.
+  // utm_content vẫn đọc riêng để phân biệt hook — chỉ dùng nội bộ (GA4 đích không đọc trường này).
   var utmParams = new URLSearchParams(window.location.search);
   var trackingContext = {
     placement: utmParams.get('utm_source') || 'direct',
-    medium: utmParams.get('utm_medium') || 'none',
-    campaign: utmParams.get('utm_campaign') || 'gieoloc_thang7am_2026',
     variant: utmParams.get('utm_content') || 'default'
   };
 
-  // Chuyển tiếp UTM từ landing page sang link đặt lịch, để hệ thống đích (nếu có đọc query string)
-  // vẫn nhận được nguồn/kênh/hook — không bị mất khi khách bấm CTA.
+  // Chuyển tiếp utm_source (+ utm_content) từ landing page sang link đặt lịch, vì đây là hop
+  // từ ngoài (github.io) vào web 30shine.com — đúng phạm vi được phép gắn utm_source theo quy ước.
+  // Không forward utm_medium/utm_campaign vì GA4 property 251658488 không dùng 2 trường này.
   document.querySelectorAll('a[data-cta]').forEach(function(el){
     try {
       var target = new URL(el.href, window.location.href);
-      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function(key){
+      ['utm_source', 'utm_content'].forEach(function(key){
         var val = utmParams.get(key);
         if (val && !target.searchParams.has(key)) target.searchParams.set(key, val);
       });
@@ -614,8 +614,6 @@
         gtag('event', 'cta_click', {
           cta_name: el.getAttribute('data-cta'),
           placement: trackingContext.placement,
-          medium: trackingContext.medium,
-          campaign: trackingContext.campaign,
           variant: trackingContext.variant
         });
       }
