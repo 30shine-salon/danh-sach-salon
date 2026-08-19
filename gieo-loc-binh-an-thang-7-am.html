@@ -8,6 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- GA4: thay G-XXXXXXXXXX bằng Measurement ID thật trước khi go-live -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <style>
   :root{
     --bg-deep:#0a1530;
@@ -168,6 +178,17 @@
     padding-top:20px;
   }
 
+  /* ---------- AFFIRM ---------- */
+  .affirm{padding:0 0 80px;}
+  .affirm-lead{
+    text-align:center; font-family:'Playfair Display',serif; font-style:italic;
+    font-size:clamp(1.3rem,2.4vw,1.7rem); color:var(--gold); margin-bottom:16px;
+  }
+  .affirm-body{
+    text-align:center; max-width:640px; margin:0 auto;
+    color:var(--ink-muted); font-size:1.04rem;
+  }
+
   /* ---------- STATS ---------- */
   .stats-strip{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
@@ -249,6 +270,29 @@
   footer .wordmark{font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; color:var(--gold);}
   footer p{margin-top:14px; color:var(--ink-faint); font-size:.86rem;}
 
+  /* ---------- CTA ---------- */
+  .cta-section{padding:0 0 96px;}
+  .cta-card{
+    background:linear-gradient(160deg,var(--card-bg-strong),var(--card-bg));
+    border:1px solid var(--card-border); border-radius:24px;
+    padding:56px 48px; text-align:center; box-shadow:var(--shadow);
+  }
+  .cta-card .kicker{display:inline-block;}
+  .cta-card h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:16px;}
+  .cta-card p{color:var(--ink-muted); font-size:1rem; max-width:520px; margin:0 auto;}
+  .cta-card .cta-sub{margin-top:10px;}
+  .cta-btn{
+    display:inline-block; margin-top:32px;
+    background:linear-gradient(120deg,#fbe3a8,var(--gold-soft)); color:var(--bg-deep);
+    font-weight:700; font-size:1rem; letter-spacing:.02em;
+    padding:16px 40px; border-radius:999px; box-shadow:0 12px 30px rgba(217,183,105,0.25);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(217,183,105,0.35);}
+  @media (max-width:480px){
+    .cta-card{padding:40px 24px;}
+  }
+
   @media (max-width:860px){
     .meaning-grid{grid-template-columns:1fr;}
     .stats-strip{grid-template-columns:1fr;}
@@ -287,8 +331,8 @@
   <div class="wrap hero-inner">
     <span class="eyebrow">30Shine · Tháng 7 Âm lịch 2026</span>
     <h1>Gieo Lộc Bình An<br>Hành Thiện Tháng 7 Âm</h1>
-    <p class="sub">Một mùa hành thiện theo cách riêng của người làm nghề chăm sóc — trao tận tay những sản phẩm chất lượng cao đến đúng người biết dùng, biết quý.</p>
-    <p class="quote">"Sản phẩm tốt chỉ phát huy trọn vẹn giá trị khi gặp người chủ biết trân trọng."</p>
+    <p class="sub">Góp một phần nhỏ vào lối sống Zero-Waste Grooming của đàn ông hiện đại.</p>
+    <p class="quote">"Một sản phẩm cao cấp chỉ thực sự tròn trĩnh giá trị khi nằm trên mái tóc của người biết thưởng thức — không phải nằm yên trong kho chờ một ngày không ai hay."</p>
     <div class="dates">
       <span class="pill">16/08 – 10/09/2026 · 24 ngày</span>
       <span class="pill ghost">9.694 phần lộc · 58 salon toàn quốc</span>
@@ -299,15 +343,22 @@
 <section class="meaning">
   <div class="wrap meaning-grid">
     <div class="meaning-copy">
-      <h2 style="margin-bottom:26px;">Vì sao là Tháng 7 Âm?</h2>
-      <p>Tháng 7 Âm lịch từ lâu là <strong>mùa hành thiện</strong> trong văn hoá người Việt — mùa của lòng biết ơn, của những điều lành được gieo đi không toan tính, mùa để trân trọng và không để điều tốt bị lãng phí.</p>
-      <p>Với một nghề đặt đôi tay lên mái tóc và làn da của hàng nghìn người mỗi ngày, 30Shine chọn hành thiện theo cách riêng của mình: không phải cho đi những gì dư thừa, mà <strong>trao tận tay những sản phẩm cao cấp, chính hãng</strong> — đến đúng người biết dùng, biết quý chúng.</p>
-      <p>Đây đều là những sản phẩm chăm sóc thực sự tốt, dùng ngon nhất trong tháng 8, 9, 10 — thậm chí đến tận đầu năm sau. Một món quà chỉ trọn vẹn ý nghĩa khi được <strong>trao đi bằng sự trân trọng</strong>, và được đón nhận bằng sự trân trọng tương xứng.</p>
+      <h2 style="margin-bottom:26px;">Vì sao là Zero-Waste Grooming?</h2>
+      <p>Ngành chăm sóc nam giới cao cấp mỗi năm bỏ lỡ rất nhiều sản phẩm tốt — không phải vì chúng kém chất lượng, mà vì <strong>thời điểm chín nhất của chúng thường trôi qua trong im lặng</strong>, giữa kho và kệ hàng.</p>
+      <p>30Shine chọn cách khác: đưa thẳng những sản phẩm chính hãng này — đúng lúc chúng đang ở <strong>phong độ tốt nhất</strong> — đến tay những người đàn ông biết dùng, biết chọn.</p>
+      <p>Tiêu dùng thông minh là không để điều tốt trôi qua uổng phí. Đó là tinh thần của <strong>Zero-Waste Grooming</strong>.</p>
     </div>
     <div class="quote-card">
-      <blockquote>Cảm ơn anh — người đàn ông hào sảng đã cùng 30Shine lan tỏa lối sống văn minh, không lãng phí.</blockquote>
-      <p class="foot-note">Toàn bộ quà tặng là sản phẩm chính hãng, được 30Shine bảo quản đúng chuẩn. Nhận quà và dùng ngay — đó là cách anh cùng chúng tôi gieo một duyên lành, tránh lãng phí tài nguyên.</p>
+      <blockquote>Đây là lựa chọn của những người đàn ông hiểu giá trị thật: dùng đúng lúc, không để điều tốt trôi qua uổng phí.</blockquote>
+      <p class="foot-note">Một trải nghiệm chăm sóc đẳng cấp, đi cùng phong cách sống sành sỏi và có trách nhiệm với tài nguyên — đó là Zero-Waste Grooming.</p>
     </div>
+  </div>
+</section>
+
+<section class="affirm">
+  <div class="wrap">
+    <p class="affirm-lead">Cảm ơn anh, một lựa chọn, cho người tiêu dùng thông thái.</p>
+    <p class="affirm-body">Nhận và sử dụng ngay sản phẩm này trong kỳ cắt tóc tới, anh không chỉ tận hưởng một trải nghiệm chăm sóc đẳng cấp, mà còn cùng 30Shine khẳng định một lối sống: sành sỏi, tối ưu và có trách nhiệm với tài nguyên.</p>
   </div>
 </section>
 
@@ -372,6 +423,17 @@
       </div>
     </div>
     <p class="gifts-note"><strong>Sản phẩm quà cụ thể tại mỗi salon có thể khác nhau, anh có thể lựa chọn dựa trên những món có sẵn tại salon, 30Shine luôn đảm bảo với anh đây là hàng chính hãng, chất lượng cao.</strong></p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-card">
+      <h2>Lịch hẹn đã sẵn sàng. Quà đã lên kệ.</h2>
+      <p>Mỗi salon chỉ có số lượng giới hạn dành cho khách đặt lịch sớm nhất.</p>
+      <p class="cta-sub">Một chuyến ghé salon — vừa làm mới diện mạo, vừa mang về sản phẩm grooming chuẩn gu.</p>
+      <a class="cta-btn" href="https://30shine.com/booking?phone=&salonId=0&step=0" data-cta="booking" target="_blank" rel="noopener">Đặt lịch ghé salon ngay</a>
+    </div>
   </div>
 </section>
 
@@ -519,6 +581,32 @@
       if (blockHasMatch) anyVisible = true;
     });
     emptyMsg.classList.toggle('show', !anyVisible);
+  });
+</script>
+
+<script>
+  // Ghi nhận nguồn vào trang: đọc UTM từ URL để gắn vào các event GA4 bên dưới.
+  // Placement dự kiến: lockscreen_noti (push) / app (banner) / web (banner) — set qua utm_source.
+  var utmParams = new URLSearchParams(window.location.search);
+  var trackingContext = {
+    placement: utmParams.get('utm_source') || 'direct',
+    medium: utmParams.get('utm_medium') || 'none',
+    campaign: utmParams.get('utm_campaign') || 'gieoloc_thang7am_2026',
+    variant: utmParams.get('utm_content') || 'default'
+  };
+
+  document.querySelectorAll('[data-cta]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          cta_name: el.getAttribute('data-cta'),
+          placement: trackingContext.placement,
+          medium: trackingContext.medium,
+          campaign: trackingContext.campaign,
+          variant: trackingContext.variant
+        });
+      }
+    });
   });
 </script>
 </body>
